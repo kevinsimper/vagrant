@@ -101,3 +101,8 @@ Cmnd_Alias VAGRANT_EXPORTS_REMOVE = /bin/sed -r -e * d -ibak /etc/exports
 %sudo ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD_CHECK, VAGRANT_NFSD_START, VAGRANT_NFSD_APPLY, VAGRANT_EXPORTS_REMOVE
 ```
 
+## Common problems
+
+# NFS does update the file
+
+It can be that your editor is doing a atomic save, which save the file as a new one and then swap it out with the old one. If the file has not changed filesize, NFS will not update the file. The solution is to disabled atomic save in your editor.
